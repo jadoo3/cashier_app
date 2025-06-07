@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dashboard</class>
+ <widget class="QMainWindow" name="Dashboard">
+  <property name="geometry">
+   <rect>
+    <x>0</x><y>0</y><width>1024</width><height>768</height>
+   </rect>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QWidget" name="sidebar">
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item><widget class="QPushButton" name="btn_dashboard"><property name="text"><string>لوحة التحكم</string></property></widget></item>
+       <item><widget class="QPushButton" name="btn_sales"><property name="text"><string>مبيعات</string></property></widget></item>
+       <!-- أزرار أخرى بنفس النمط -->
+       <item><spacer name="verticalSpacer"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property></spacer></item>
+      </layout>
+     </widget>
+    </item>
+    <item><widget class="QStackedWidget" name="stack"/></item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
