@@ -68,3 +68,4 @@ class Product(TimestampMixin, Base):
             raise ValidationError("سعر البيع يجب أن يكون أكبر من أو يساوي سعر الشراء")
         self.price_buy = new_buy
         self.price_sell = new_sell
+

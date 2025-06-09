@@ -1,7 +1,3 @@
-git add README.md
-git add requirements.txt
-git add pyproject.toml
-git commit -m "دمج تعارضات main مع الملفات المحلية"
 
 # Cashier App
 

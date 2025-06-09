@@ -12,3 +12,4 @@ python-barcode==0.15.*
 fuzzywuzzy[speedup]==0.18.*
 arabic-reshaper==3.0.0
 python-bidi==0.4.2
+

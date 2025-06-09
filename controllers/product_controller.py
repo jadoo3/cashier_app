@@ -281,3 +281,6 @@ class ProductController:
             )
             
             session.delete(product)
+            # commit handled by session_scope context manager
+
+

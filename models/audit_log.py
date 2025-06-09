@@ -14,3 +14,4 @@ class AuditLog(TimestampMixin, Base):
 
     def __repr__(self):
         return f"<AuditLog {self.entity} {self.action} {self.entity_id}>" 
+
