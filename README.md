@@ -1,66 +1,75 @@
-# نظام نقاط البيع (POS)
+git add README.md
+git add requirements.txt
+git add pyproject.toml
+git commit -m "دمج تعارضات main مع الملفات المحلية"
 
-نظام نقاط البيع مبني باستخدام Python و PyQt6 و SQLAlchemy.
+# Cashier App
 
-## المتطلبات
+A modern point-of-sale (POS) system built with Python, featuring a user-friendly interface and comprehensive sales management capabilities.
 
-- Python 3.8 أو أحدث
-- Poetry (مدير الحزم)
+## Features
 
-## التثبيت
+- User authentication and authorization
+- Product management
+- Sales tracking and reporting
+- Inventory management
+- Customer management
+- Receipt generation
 
-1. قم بتثبيت Poetry إذا لم يكن مثبتاً:
+## Installation
+
+1. Clone the repository:
 ```bash
-curl -sSL https://install.python-poetry.org | python3 -
+git clone https://github.com/yourusername/cashier_app.git
+cd cashier_app
 ```
 
-2. قم بتثبيت التبعيات:
+2. Create and activate a virtual environment:
 ```bash
-poetry install
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-3. قم بتهيئة قاعدة البيانات:
+3. Install dependencies:
 ```bash
-poetry run python -m cashier_app.init_db
+pip install -r requirements.txt
 ```
 
-## التشغيل
+## Usage
 
-لتشغيل التطبيق:
+1. Initialize the database:
 ```bash
-poetry run python -m cashier_app.main
+python init_db.py
 ```
 
-## الميزات
+2. Run the application:
+```bash
+python main.py
+```
 
-- إدارة المبيعات والفواتير
-- إدارة المنتجات والمخزون
-- طباعة الفواتير
-- التقارير والإحصائيات
-- دعم اللغة العربية
-
-## الهيكل
+## Project Structure
 
 ```
 cashier_app/
-├── assets/          # الموارد (الأيقونات، إلخ)
-├── config/          # إعدادات التطبيق
-├── controllers/     # المتحكمات
-├── database/        # إعدادات قاعدة البيانات
-├── models/          # نماذج البيانات
-├── utils/           # أدوات مساعدة
-└── views/           # واجهات المستخدم
-    └── pages/       # صفحات التطبيق
+├── config/         # Configuration files
+├── controllers/    # Business logic
+├── database/       # Database models and migrations
+├── models/         # Data models
+├── resources/      # Static resources
+├── tests/          # Test files
+├── ui/            # User interface components
+├── utils/         # Utility functions
+└── views/         # View templates
 ```
 
-## المساهمة
+## Contributing
 
-1. قم بعمل Fork للمشروع
-2. قم بإنشاء فرع جديد (`git checkout -b feature/amazing-feature`)
-3. قم بعمل Commit للتغييرات (`git commit -m 'Add some amazing feature'`)
-4. قم بعمل Push للفرع (`git push origin feature/amazing-feature`)
-5. قم بفتح طلب Pull Request
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## الترخيص
+## License
 
-هذا المشروع مرخص تحت رخصة MIT - انظر ملف [LICENSE](LICENSE) للتفاصيل.
+This project is licensed under the MIT License - see the LICENSE file for details.
