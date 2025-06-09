@@ -111,6 +111,9 @@ pip install -r requirements.txt
 python -m cashier_app.main
 ```
 
+If you run the application on a headless server without an X display,
+`main.py` will automatically fall back to the Qt `offscreen` platform.
+
 ### Controllers and Models
 - SalesController, CreditorController, ReportController, DBExplorerController
 - Sale, SaleItem, Creditor, Payment, PriceHistory, Return models with TimestampMixin

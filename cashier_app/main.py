@@ -1,6 +1,7 @@
 """Application entry point."""
 
 import locale
+import os
 import sys
 
 from PyQt5.QtWidgets import QApplication
@@ -19,6 +20,10 @@ def main() -> None:
             f"تحذير: التعريب {LOCALE} غير متوفر على هذا النظام، سيتم استخدام الإعداد الافتراضي."
         )
         locale.setlocale(locale.LC_ALL, "")
+
+    # Use offscreen platform when no display is available
+    if not os.environ.get("DISPLAY"):
+        os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
     init_db()
 
     app = QApplication(sys.argv)

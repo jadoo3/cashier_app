@@ -57,6 +57,8 @@ class Dashboard(MainWindow):
 
         sidebar.addStretch()
 
+        self.stack.setCurrentIndex(0)
+
         welcome = QLabel("مرحباً بك في لوحة التحكم")
         welcome.setStyleSheet("font-size: 18px")
         self.layout.addWidget(welcome)
