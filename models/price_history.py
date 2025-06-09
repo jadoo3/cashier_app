@@ -12,3 +12,4 @@ class PriceHistory(Base):
     changed_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
 
     product = relationship('Product')
+

@@ -359,3 +359,6 @@ class ProductView(QWidget, ErrorHandlerMixin):
                 QMessageBox.information(self, "نجاح", "تم حذف المنتج بنجاح")
             except Exception as e:
                 QMessageBox.critical(self, "خطأ", f"حدث خطأ أثناء حذف المنتج: {str(e)}")
+        else:
+            QMessageBox.information(self, "إلغاء", "تم إلغاء عملية الحذف")
+

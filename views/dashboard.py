@@ -184,3 +184,4 @@ class Dashboard(QMainWindow):
         """)
         btn.setCheckable(True)
         return btn
+
