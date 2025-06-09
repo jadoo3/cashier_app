@@ -1,65 +1,66 @@
 # نظام نقاط البيع (POS)
 
-نظام نقاط البيع هو تطبيق سطح المكتب مصمم خصيصًا لمتاجر البيع بالتجزئة الصغيرة. يوفر واجهة مستخدم كاملة باللغة العربية مع دعم للاتجاه من اليمين إلى اليسار (RTL).
+نظام نقاط البيع مبني باستخدام Python و PyQt6 و SQLAlchemy.
 
-## المميزات الرئيسية
-
-- واجهة مبيعات متكاملة مع دعم للباركود
-- إدارة المنتجات والمخزون
-- إدارة الدائنين
-- التقارير والإحصائيات
-- تحديث الأسعار وتتبع التغييرات
-- استكشاف قاعدة البيانات وتصدير البيانات
-
-## متطلبات النظام
+## المتطلبات
 
 - Python 3.8 أو أحدث
-- PyQt6
-- SQLAlchemy
-- PostgreSQL (اختياري) أو SQLite
+- Poetry (مدير الحزم)
 
 ## التثبيت
 
-1. قم بتثبيت المتطلبات:
+1. قم بتثبيت Poetry إذا لم يكن مثبتاً:
 ```bash
-pip install -r requirements.txt
+curl -sSL https://install.python-poetry.org | python3 -
 ```
 
-2. قم بتشغيل التطبيق:
+2. قم بتثبيت التبعيات:
 ```bash
-python main.py
+poetry install
 ```
 
----
-
-# Point of Sale (POS) System
-
-A desktop-based Point-of-Sale application specifically designed for small retail stores. Provides a complete Arabic user interface with right-to-left (RTL) support.
-
-## Key Features
-
-- Integrated sales interface with barcode support
-- Product and inventory management
-- Creditor management
-- Reports and statistics
-- Price updates and change tracking
-- Database explorer and data export
-
-## System Requirements
-
-- Python 3.8 or later
-- PyQt6
-- SQLAlchemy
-- PostgreSQL (optional) or SQLite
-
-## Installation
-
-1. Install requirements:
+3. قم بتهيئة قاعدة البيانات:
 ```bash
-pip install -r requirements.txt
+poetry run python -m cashier_app.init_db
 ```
 
-2. Run the application:
+## التشغيل
+
+لتشغيل التطبيق:
 ```bash
-python main.py
+poetry run python -m cashier_app.main
 ```
+
+## الميزات
+
+- إدارة المبيعات والفواتير
+- إدارة المنتجات والمخزون
+- طباعة الفواتير
+- التقارير والإحصائيات
+- دعم اللغة العربية
+
+## الهيكل
+
+```
+cashier_app/
+├── assets/          # الموارد (الأيقونات، إلخ)
+├── config/          # إعدادات التطبيق
+├── controllers/     # المتحكمات
+├── database/        # إعدادات قاعدة البيانات
+├── models/          # نماذج البيانات
+├── utils/           # أدوات مساعدة
+└── views/           # واجهات المستخدم
+    └── pages/       # صفحات التطبيق
+```
+
+## المساهمة
+
+1. قم بعمل Fork للمشروع
+2. قم بإنشاء فرع جديد (`git checkout -b feature/amazing-feature`)
+3. قم بعمل Commit للتغييرات (`git commit -m 'Add some amazing feature'`)
+4. قم بعمل Push للفرع (`git push origin feature/amazing-feature`)
+5. قم بفتح طلب Pull Request
+
+## الترخيص
+
+هذا المشروع مرخص تحت رخصة MIT - انظر ملف [LICENSE](LICENSE) للتفاصيل.
