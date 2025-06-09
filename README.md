@@ -28,6 +28,7 @@ cashier_app/
 ├─ models/               # Product, Sale, SaleItem, Creditor, PriceHistory
 ├─ controllers/          # ProductController, SalesController, ...
 ├─ views/                # PyQt windows (SalesView is default)
+├─ assets/icons          # SVG icons used in the UI
 ├─ ui/                   # .ui files generated from Qt Designer
 ├─ utils/                # excel_export.py, pdf_generator.py, validators.py
 └─ tests/                # pytest suites
@@ -102,3 +103,16 @@ class SalesController:
 ---
 
 > هذا الملخّص كافٍ ليبدأ Codex (أو أي مساعد ذكي) استنباط هيكل الكود وإنشاء الملفات الأساسية تلقائيًا. إذا احتجت إلى **قوالب ملفات فعلية** أو **نماذج دوال أكثر تفصيلًا**، فأخبرني لأزوّدك بها.
+
+## كيفية التشغيل
+
+```bash
+pip install -r requirements.txt
+python -m cashier_app.main
+```
+
+### Controllers and Models
+- SalesController, CreditorController, ReportController, DBExplorerController
+- Sale, SaleItem, Creditor, Payment, PriceHistory, Return models with TimestampMixin
+- Dashboard includes sidebar buttons for switching between the main views
+
