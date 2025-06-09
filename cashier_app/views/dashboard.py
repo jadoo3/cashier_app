@@ -1,8 +1,11 @@
+ cc04qz-codex/generate-pyqt-cashier-app-structure
+
   qji01o-codex/generate-pyqt-cashier-app-structure
-=======
+
  k5wnzb-codex/generate-pyqt-cashier-app-structure
 
  hl67wh-codex/generate-pyqt-cashier-app-structure
+ main
  main
  main
 """Dashboard view with simple navigation sidebar."""
@@ -30,11 +33,16 @@ from cashier_app.views.price_update_view import PriceUpdateView
 class Dashboard(MainWindow):
     """Main dashboard window containing a sidebar to switch views."""
 
+ cc04qz-codex/generate-pyqt-cashier-app-structure
+    def __init__(self) -> None:
+        super().__init__()
+        self.setWindowTitle("لوحة التحكم")
+د
  qji01o-codex/generate-pyqt-cashier-app-structure
     def __init__(self) -> None:
         super().__init__()
         self.setWindowTitle("لوحة التحكم")
-=======
+\
  k5wnzb-codex/generate-pyqt-cashier-app-structure
     def __init__(self) -> None:
         super().__init__()
@@ -57,6 +65,7 @@ class Dashboard(MainWindow):
  hl67wh-codex/generate-pyqt-cashier-app-structure
   main
       main
+ main
 
         container = QWidget()
         container_layout = QHBoxLayout(container)
@@ -88,15 +97,22 @@ class Dashboard(MainWindow):
 
         sidebar.addStretch()
 
+ cc04qz-codex/generate-pyqt-cashier-app-structure
+        self.stack.setCurrentIndex(0)
+
+
         qji01o-codex/generate-pyqt-cashier-app-structure
         self.stack.setCurrentIndex(0)
 
-=======
+
         main
+ main
         welcome = QLabel("مرحباً بك في لوحة التحكم")
         welcome.setStyleSheet("font-size: 18px")
         self.layout.addWidget(welcome)
         self.layout.addWidget(container)
+ cc04qz-codex/generate-pyqt-cashier-app-structure
+
         qji01o-codex/generate-pyqt-cashier-app-structure
 
         k5wnzb-codex/generate-pyqt-cashier-app-structure
@@ -107,3 +123,4 @@ class Dashboard(MainWindow):
  main
 main
          main
+ main
