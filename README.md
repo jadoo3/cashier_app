@@ -111,6 +111,16 @@ pip install -r requirements.txt
 python -m cashier_app.main
 ```
 
+        qji01o-codex/generate-pyqt-cashier-app-structure
+If you run the application on a headless server without an X display,
+`main.py` will automatically fall back to the Qt `offscreen` platform.
+
+### Controllers and Models
+- SalesController, CreditorController, ReportController, DBExplorerController
+- Sale, SaleItem, Creditor, Payment, PriceHistory, Return models with TimestampMixin
+- Dashboard includes sidebar buttons for switching between the main views
+
+
 ### Controllers and Models
 - SalesController, CreditorController, ReportController, DBExplorerController
 - Sale, SaleItem, Creditor, Payment, PriceHistory, Return models with TimestampMixin
@@ -123,3 +133,4 @@ python -m cashier_app.main
 
  main
  main
+       main
