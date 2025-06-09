@@ -114,5 +114,8 @@ python -m cashier_app.main
 ### Controllers and Models
 - SalesController, CreditorController, ReportController, DBExplorerController
 - Sale, SaleItem, Creditor, Payment, PriceHistory, Return models with TimestampMixin
+ hl67wh-codex/generate-pyqt-cashier-app-structure
 - Dashboard includes sidebar buttons for switching between the main views
+
+ main
 

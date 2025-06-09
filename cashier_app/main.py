@@ -12,6 +12,7 @@ from cashier_app.views.dashboard import Dashboard
 
 def main() -> None:
     """Initialize DB and start Qt application."""
+ hl67wh-codex/generate-pyqt-cashier-app-structure
     try:
         locale.setlocale(locale.LC_ALL, LOCALE)
     except locale.Error:
@@ -19,6 +20,9 @@ def main() -> None:
             f"تحذير: التعريب {LOCALE} غير متوفر على هذا النظام، سيتم استخدام الإعداد الافتراضي."
         )
         locale.setlocale(locale.LC_ALL, "")
+
+    locale.setlocale(locale.LC_ALL, LOCALE)
+main
     init_db()
 
     app = QApplication(sys.argv)
