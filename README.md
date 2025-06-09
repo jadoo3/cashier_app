@@ -102,3 +102,15 @@ class SalesController:
 ---
 
 > هذا الملخّص كافٍ ليبدأ Codex (أو أي مساعد ذكي) استنباط هيكل الكود وإنشاء الملفات الأساسية تلقائيًا. إذا احتجت إلى **قوالب ملفات فعلية** أو **نماذج دوال أكثر تفصيلًا**، فأخبرني لأزوّدك بها.
+
+## كيفية التشغيل
+
+```bash
+pip install -r requirements.txt
+python -m cashier_app.main
+```
+
+### Controllers and Models
+- SalesController, CreditorController, ReportController, DBExplorerController
+- Sale, SaleItem, Creditor, Payment, PriceHistory, Return models with TimestampMixin
+
