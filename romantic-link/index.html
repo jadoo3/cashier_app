@@ -3,18 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For My Love</title>
+  <title>Rose Night</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@600;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-a: #120818;
-      --bg-b: #3a1025;
-      --bg-c: #ff8fab;
-      --glass: rgba(255, 255, 255, 0.14);
-      --text: #fff8fb;
-      --accent: #ff4d88;
-      --accent-2: #ff9ec2;
-      --stem: #34b875;
-      --leaf: #62dba0;
+      --bg-1: #05040b;
+      --bg-2: #0f0b1f;
+      --bg-3: #1e0f2d;
+      --gold: #f7e7b2;
+      --name-a: #ffd7ea;
+      --name-b: #f7b7ff;
+      --name-c: #b8d7ff;
+      --rose-1: #8f123f;
+      --rose-2: #cf2f6e;
+      --rose-3: #ff79a7;
+      --stem: #2d8f67;
+      --leaf: #46b884;
     }
 
     * { box-sizing: border-box; }
@@ -24,243 +30,274 @@
       min-height: 100vh;
       display: grid;
       place-items: center;
-      font-family: "Cairo", "Tajawal", sans-serif;
-      color: var(--text);
+      overflow: hidden;
+      color: #fff;
       background:
-        radial-gradient(circle at 8% 15%, #ffffff22, transparent 30%),
-        radial-gradient(circle at 82% 78%, #ffffff22, transparent 34%),
-        linear-gradient(130deg, var(--bg-a), var(--bg-b) 52%, var(--bg-c));
-      overflow: hidden;
+        radial-gradient(circle at 20% 18%, #ffffff12, transparent 32%),
+        radial-gradient(circle at 80% 74%, #ffffff12, transparent 34%),
+        linear-gradient(160deg, var(--bg-1), var(--bg-2) 45%, var(--bg-3));
     }
 
-    .glow {
+    .stars,
+    .stars::before,
+    .stars::after {
       position: fixed;
-      width: 42vmax;
-      height: 42vmax;
-      border-radius: 50%;
-      filter: blur(58px);
-      z-index: 0;
+      inset: -20%;
+      content: "";
       pointer-events: none;
-      opacity: 0.45;
-      animation: pulse 6s ease-in-out infinite;
+      background-repeat: repeat;
+      background-size: 280px 280px;
+      animation: twinkle 5.8s ease-in-out infinite;
+      opacity: .6;
     }
 
-    .g1 { background: #ff4d8850; top: -14vmax; left: -8vmax; }
-    .g2 { background: #ffc2d868; bottom: -18vmax; right: -10vmax; animation-delay: 2s; }
+    .stars {
+      background-image:
+        radial-gradient(2px 2px at 30px 40px, #fff 98%, transparent),
+        radial-gradient(1.6px 1.6px at 130px 90px, #fff8 98%, transparent),
+        radial-gradient(1.8px 1.8px at 220px 210px, #fff9 98%, transparent),
+        radial-gradient(1.2px 1.2px at 90px 190px, #fff7 98%, transparent),
+        radial-gradient(1.4px 1.4px at 180px 35px, #fff6 98%, transparent);
+    }
 
-    .card {
+    .stars::before {
+      transform: scale(1.2) rotate(6deg);
+      animation-delay: 1.4s;
+      opacity: .35;
+    }
+
+    .stars::after {
+      transform: scale(0.95) rotate(-4deg);
+      animation-delay: 2.6s;
+      opacity: .28;
+    }
+
+    .scene {
       position: relative;
+      width: min(95vw, 760px);
+      height: min(92vh, 900px);
+      display: grid;
+      place-items: center;
       z-index: 2;
-      width: min(92vw, 560px);
-      padding: 2rem 1.2rem 2.2rem;
-      text-align: center;
-      border-radius: 28px;
-      background: var(--glass);
-      border: 1px solid #ffffff40;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 20px 45px #0b040b80;
-      animation: reveal 1.1s cubic-bezier(.21,.95,.33,1) both;
     }
 
-    .title {
-      margin: 0;
-      font-size: clamp(1.5rem, 3.4vw, 2.3rem);
-      font-weight: 700;
-      letter-spacing: .2px;
+    .bouquet {
+      position: absolute;
+      bottom: 13%;
+      width: min(82vw, 480px);
+      height: min(52vh, 430px);
+      filter: drop-shadow(0 22px 30px #00000090);
+      animation: sway 6.2s ease-in-out infinite;
     }
 
-    .name {
-      display: inline-block;
-      color: #ffd3e5;
-      text-shadow: 0 0 18px #ff70aa80;
-      margin-right: 0.2rem;
+    .rose {
+      position: absolute;
+      transform-origin: 50% 100%;
+      animation: sway-rose 4.8s ease-in-out infinite;
     }
 
-    .msg {
-      margin: .75rem auto 0;
-      width: fit-content;
-      max-width: 90%;
-      white-space: nowrap;
-      overflow: hidden;
-      border-left: 2px solid #ffe8f2;
-      font-size: clamp(.95rem, 2.5vw, 1.1rem);
-      opacity: .95;
-      animation: typing 3.4s steps(34) 1.2s both, caret 700ms step-end infinite;
+    .rose.r1 { left: 5%; bottom: 2%; transform: rotate(-16deg) scale(.92); }
+    .rose.r2 { left: 24%; bottom: 0%; transform: rotate(-7deg) scale(1.02); }
+    .rose.r3 { left: 42%; bottom: 7%; transform: rotate(0deg) scale(1.16); }
+    .rose.r4 { left: 62%; bottom: 1%; transform: rotate(8deg) scale(1.00); }
+    .rose.r5 { left: 78%; bottom: 3%; transform: rotate(16deg) scale(.9); }
+
+    .stem {
+      position: absolute;
+      left: 46%;
+      top: 86px;
+      width: 12px;
+      height: 170px;
+      border-radius: 999px;
+      background: linear-gradient(var(--stem), #205f45);
     }
 
-    .rose-wrap {
-      margin: 1.6rem auto .9rem;
-      width: 240px;
-      height: 240px;
-      position: relative;
-      animation: float 3.2s ease-in-out infinite;
+    .leaf {
+      position: absolute;
+      width: 54px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--leaf), #2b9367);
+      border-radius: 0 100% 0 100%;
+      box-shadow: inset -6px -8px 12px #0a4b2f44;
+    }
+
+    .leaf.l1 { left: 8px; top: 158px; transform: rotate(-28deg); }
+    .leaf.l2 { left: 40px; top: 192px; transform: rotate(148deg); }
+
+    .bloom {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 120px;
+      height: 120px;
     }
 
     .petal {
       --r: 0deg;
       position: absolute;
-      width: 96px;
-      height: 96px;
-      top: 55px;
-      left: 72px;
-      background: linear-gradient(145deg, var(--accent), var(--accent-2));
-      border-radius: 25% 75% 55% 45%;
-      transform: rotate(var(--r)) scale(0.15);
+      inset: 26px;
+      border-radius: 26% 74% 52% 48%;
+      background: radial-gradient(circle at 30% 28%, var(--rose-3) 0%, var(--rose-2) 48%, var(--rose-1) 100%);
+      box-shadow: inset -8px -10px 14px #5f0f2f77, 0 0 18px #ff8fb280;
+      transform: rotate(var(--r)) scale(0.08);
       transform-origin: 50% 78%;
-      box-shadow: inset -9px -10px 14px #9d0f4f4f, 0 0 15px #ff8db060;
       opacity: 0;
-      animation: bloom 1.35s ease-out forwards;
+      animation: bloom 1.8s cubic-bezier(.2,.9,.22,1) forwards;
     }
 
-    .p2 { --r: 45deg; animation-delay: .06s; }
-    .p3 { --r: 90deg; animation-delay: .12s; }
-    .p4 { --r: 135deg; animation-delay: .18s; }
-    .p5 { --r: 180deg; animation-delay: .24s; }
-    .p6 { --r: 225deg; animation-delay: .3s; }
-    .p7 { --r: 270deg; animation-delay: .36s; }
-    .p8 { --r: 315deg; animation-delay: .42s; }
+    .p2 { --r: 45deg; animation-delay: .08s; }
+    .p3 { --r: 90deg; animation-delay: .16s; }
+    .p4 { --r: 135deg; animation-delay: .24s; }
+    .p5 { --r: 180deg; animation-delay: .32s; }
+    .p6 { --r: 225deg; animation-delay: .4s; }
+    .p7 { --r: 270deg; animation-delay: .48s; }
+    .p8 { --r: 315deg; animation-delay: .56s; }
 
     .core {
       position: absolute;
-      width: 66px;
-      height: 66px;
-      top: 89px;
-      left: 87px;
+      inset: 43px;
       border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #ffb4cf, #f11169 58%, #b80f4e);
-      box-shadow: inset -10px -12px 12px #7b00324d, 0 0 26px #ff74ad8a;
-      transform: scale(0.2);
+      background: radial-gradient(circle at 30% 30%, #ffc3da, #e91e63 65%, #8c0d38);
+      box-shadow: inset -10px -12px 12px #5f0a2e66, 0 0 24px #ff86af88;
+      transform: scale(0.08);
       opacity: 0;
-      animation: bloom 1s .46s ease-out forwards;
+      animation: bloom-core 1.45s .45s cubic-bezier(.2,.9,.22,1) forwards;
     }
 
-    .stem {
+    .text-wrap {
       position: absolute;
-      width: 11px;
-      height: 92px;
-      top: 152px;
-      left: 114px;
-      background: linear-gradient(var(--stem), #218d59);
-      border-radius: 999px;
+      top: 13%;
+      width: min(92vw, 700px);
+      text-align: center;
+      padding: 0 12px;
     }
 
-    .leaf {
-      position: absolute;
-      width: 58px;
-      height: 28px;
-      background: linear-gradient(145deg, var(--leaf), #2ea56b);
-      border-radius: 0 100% 0 100%;
-      box-shadow: inset -5px -6px 10px #126f432b;
-    }
-
-    .l1 { left: 64px; top: 188px; transform: rotate(-20deg); }
-    .l2 { left: 118px; top: 204px; transform: rotate(158deg); }
-
-    .hint {
+    .name {
       margin: 0;
-      font-size: .95rem;
-      opacity: .9;
-    }
-
-    .hearts span {
-      position: absolute;
-      bottom: -30px;
-      color: #ffe2ee;
-      text-shadow: 0 0 10px #ff8ab3b0;
+      font-family: "Cairo", sans-serif;
+      font-size: clamp(2rem, 8vw, 4.9rem);
+      font-weight: 800;
+      line-height: 1.15;
+      background: linear-gradient(120deg, var(--name-a), var(--name-b), var(--name-c));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 8px 26px #ff8fc266;
+      transform: translateY(34px);
       opacity: 0;
-      animation: fly 5.2s linear infinite;
-      z-index: 1;
-      pointer-events: none;
+      animation: rise-name 1.2s .25s ease-out forwards;
     }
 
-    .hearts span:nth-child(1) { left: 8%; font-size: 20px; animation-delay: 0s; }
-    .hearts span:nth-child(2) { left: 18%; font-size: 14px; animation-delay: 1s; }
-    .hearts span:nth-child(3) { left: 74%; font-size: 18px; animation-delay: 1.8s; }
-    .hearts span:nth-child(4) { left: 87%; font-size: 13px; animation-delay: 2.6s; }
-    .hearts span:nth-child(5) { left: 50%; font-size: 16px; animation-delay: 3.2s; }
-
-    @keyframes reveal {
-      from { transform: translateY(24px) scale(.96); opacity: 0; }
-      to { transform: translateY(0) scale(1); opacity: 1; }
+    .verse {
+      margin: 14px auto 0;
+      max-width: 22ch;
+      font-family: "Amiri", serif;
+      font-size: clamp(1.05rem, 3.9vw, 2rem);
+      line-height: 1.85;
+      color: var(--gold);
+      text-shadow: 0 2px 18px #000000a6;
+      opacity: 0;
+      animation: fade-verse 2.2s 1.25s ease-out forwards;
     }
 
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 34ch; }
-    }
-
-    @keyframes caret {
-      50% { border-color: transparent; }
+    @keyframes twinkle {
+      0%, 100% { opacity: .28; }
+      50% { opacity: .72; }
     }
 
     @keyframes bloom {
       to { transform: rotate(var(--r)) scale(1); opacity: 1; }
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-9px); }
+    @keyframes bloom-core {
+      to { transform: scale(1); opacity: 1; }
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.08); }
+    @keyframes sway {
+      0%, 100% { transform: rotate(0deg) translateY(0); }
+      50% { transform: rotate(1.4deg) translateY(-2px); }
     }
 
-    @keyframes fly {
-      0% { transform: translateY(20px) scale(.7); opacity: 0; }
-      12% { opacity: .95; }
-      100% { transform: translateY(-110vh) scale(1.3); opacity: 0; }
+    @keyframes sway-rose {
+      0%, 100% { transform-origin: 50% 100%; }
+      50% { transform-origin: 54% 100%; }
+    }
+
+    @keyframes rise-name {
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fade-verse {
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 640px) {
+      .scene { height: 100vh; }
+      .text-wrap { top: 11%; }
+      .bouquet { bottom: 8%; }
+      .verse { max-width: 20ch; }
     }
   </style>
 </head>
 <body>
-  <div class="glow g1" aria-hidden="true"></div>
-  <div class="glow g2" aria-hidden="true"></div>
+  <div class="stars" aria-hidden="true"></div>
 
-  <div class="hearts" aria-hidden="true">
-    <span>❤</span><span>❤</span><span>❤</span><span>❤</span><span>❤</span>
-  </div>
+  <main class="scene">
+    <section class="text-wrap">
+      <h1 class="name" id="name"></h1>
+      <p class="verse">فَوَدَدتُ تَقبيلَ السُيوفِ لِأَنَّها ... لَمَعَت كَبِرقِ ثَغرِكِ المُتَبَسِّمِ</p>
+    </section>
 
-  <main class="card">
-    <h1 class="title">وردة إلكترونية خصيصًا إلك يا <span class="name" id="name">شادن</span></h1>
-    <p class="msg" id="msg">وردة إلكترونية لإلك يا شادن 🌹</p>
+    <section class="bouquet" aria-hidden="true">
+      <div class="rose r1">
+        <div class="bloom">
+          <div class="petal"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div>
+          <div class="petal p5"></div><div class="petal p6"></div><div class="petal p7"></div><div class="petal p8"></div>
+          <div class="core"></div>
+        </div>
+        <div class="stem"></div><div class="leaf l1"></div><div class="leaf l2"></div>
+      </div>
 
-    <div class="rose-wrap" aria-label="وردة إلكترونية متحركة">
-      <div class="petal"></div>
-      <div class="petal p2"></div>
-      <div class="petal p3"></div>
-      <div class="petal p4"></div>
-      <div class="petal p5"></div>
-      <div class="petal p6"></div>
-      <div class="petal p7"></div>
-      <div class="petal p8"></div>
-      <div class="core"></div>
-      <div class="stem"></div>
-      <div class="leaf l1"></div>
-      <div class="leaf l2"></div>
-    </div>
+      <div class="rose r2">
+        <div class="bloom">
+          <div class="petal"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div>
+          <div class="petal p5"></div><div class="petal p6"></div><div class="petal p7"></div><div class="petal p8"></div>
+          <div class="core"></div>
+        </div>
+        <div class="stem"></div><div class="leaf l1"></div><div class="leaf l2"></div>
+      </div>
 
-    <p class="hint">من مبرمج فقط</p>
+      <div class="rose r3">
+        <div class="bloom">
+          <div class="petal"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div>
+          <div class="petal p5"></div><div class="petal p6"></div><div class="petal p7"></div><div class="petal p8"></div>
+          <div class="core"></div>
+        </div>
+        <div class="stem"></div><div class="leaf l1"></div><div class="leaf l2"></div>
+      </div>
+
+      <div class="rose r4">
+        <div class="bloom">
+          <div class="petal"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div>
+          <div class="petal p5"></div><div class="petal p6"></div><div class="petal p7"></div><div class="petal p8"></div>
+          <div class="core"></div>
+        </div>
+        <div class="stem"></div><div class="leaf l1"></div><div class="leaf l2"></div>
+      </div>
+
+      <div class="rose r5">
+        <div class="bloom">
+          <div class="petal"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div>
+          <div class="petal p5"></div><div class="petal p6"></div><div class="petal p7"></div><div class="petal p8"></div>
+          <div class="core"></div>
+        </div>
+        <div class="stem"></div><div class="leaf l1"></div><div class="leaf l2"></div>
+      </div>
+    </section>
   </main>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const rawName = (params.get("name") || "").trim();
-    const rawMsg = (params.get("msg") || "").trim();
-
-    const safeName = rawName.slice(0, 40) || "شادن";
-    const safeMsg = rawMsg.slice(0, 120) || "وردة إلكترونية لإلك يا شادن 🌹";
-
-    document.getElementById("name").textContent = safeName;
-
-    const msgEl = document.getElementById("msg");
-    msgEl.textContent = safeMsg;
-    msgEl.style.width = "0";
-    msgEl.style.animation = "none";
-    void msgEl.offsetWidth;
-    const steps = Math.max(20, Math.min(60, safeMsg.length));
-    msgEl.style.animation = `typing 3.2s steps(${steps}) 1.1s both, caret 700ms step-end infinite`;
+    document.getElementById("name").textContent = "شادن";
   </script>
 </body>
 </html>
