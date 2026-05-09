@@ -83,15 +83,17 @@
 
     .bouquet {
       position: absolute;
-      bottom: 13%;
-      width: min(82vw, 480px);
-      height: min(52vh, 430px);
+      bottom: max(24px, 6vh);
+      width: min(92vw, 500px);
+      height: min(42vh, 330px);
       filter: drop-shadow(0 22px 30px #00000090);
       animation: sway 6.2s ease-in-out infinite;
     }
 
     .rose {
       position: absolute;
+      width: 120px;
+      height: 260px;
       transform-origin: 50% 100%;
       animation: sway-rose 4.8s ease-in-out infinite;
     }
@@ -234,7 +236,14 @@
     @media (max-width: 640px) {
       .scene { height: 100vh; }
       .text-wrap { top: 11%; }
-      .bouquet { bottom: 8%; }
+      .bouquet {
+        bottom: max(28px, 5vh);
+        height: 320px;
+      }
+      .rose {
+        width: 110px;
+        height: 250px;
+      }
       .verse { max-width: 20ch; }
     }
   </style>
