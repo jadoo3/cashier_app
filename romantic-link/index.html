@@ -223,8 +223,8 @@
   </div>
 
   <main class="card">
-    <h1 class="title">وردة إلكترونية خصيصًا إلك يا <span class="name" id="name">حبيبتي</span></h1>
-    <p class="msg" id="msg">كل ما تفتحي الرابط... قلبي بيسلّم عليكي قبلّي 🌹</p>
+    <h1 class="title">وردة إلكترونية خصيصًا إلك يا <span class="name" id="name">شادن</span></h1>
+    <p class="msg" id="msg">وردة إلكترونية لإلك يا شادن 🌹</p>
 
     <div class="rose-wrap" aria-label="وردة إلكترونية متحركة">
       <div class="petal"></div>
@@ -241,7 +241,7 @@
       <div class="leaf l2"></div>
     </div>
 
-    <p class="hint">من مبرمج واقع بحبك 💗</p>
+    <p class="hint">من مبرمج فقط</p>
   </main>
 
   <script>
@@ -249,8 +249,8 @@
     const rawName = (params.get("name") || "").trim();
     const rawMsg = (params.get("msg") || "").trim();
 
-    const safeName = rawName.slice(0, 40) || "حبيبتي";
-    const safeMsg = rawMsg.slice(0, 120) || "كل ما تفتحي الرابط... قلبي بيسلّم عليكي قبلّي 🌹";
+    const safeName = rawName.slice(0, 40) || "شادن";
+    const safeMsg = rawMsg.slice(0, 120) || "وردة إلكترونية لإلك يا شادن 🌹";
 
     document.getElementById("name").textContent = safeName;
 
