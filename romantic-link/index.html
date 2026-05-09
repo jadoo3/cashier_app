@@ -25,13 +25,20 @@
 
     * { box-sizing: border-box; }
 
+    html {
+      min-height: 100%;
+      background: var(--bg-1);
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
+      min-height: 100dvh;
       display: grid;
       place-items: center;
       overflow: hidden;
       color: #fff;
+      background-color: var(--bg-1);
       background:
         radial-gradient(circle at 20% 18%, #ffffff12, transparent 32%),
         radial-gradient(circle at 80% 74%, #ffffff12, transparent 34%),
@@ -81,85 +88,97 @@
       z-index: 2;
     }
 
-    .bouquet {
+    .single-rose {
+      --rose-scale: 1;
       position: absolute;
-      bottom: max(24px, 6vh);
-      width: min(92vw, 500px);
-      height: min(42vh, 330px);
-      filter: drop-shadow(0 22px 30px #00000090);
-      animation: sway 6.2s ease-in-out infinite;
+      left: 50%;
+      bottom: max(34px, 6vh);
+      width: 280px;
+      height: 410px;
+      transform: translateX(-50%) scale(var(--rose-scale));
+      filter: drop-shadow(0 26px 34px #000000a8);
+      animation: rose-breath 5.8s ease-in-out infinite;
     }
 
-    .rose {
+    .rose-head {
       position: absolute;
-      width: 120px;
-      height: 260px;
-      transform-origin: 50% 100%;
-      animation: sway-rose 4.8s ease-in-out infinite;
+      top: 0;
+      left: 50%;
+      width: 230px;
+      height: 230px;
+      transform: translateX(-50%);
+      animation: bloom-head 1.6s cubic-bezier(.2,.9,.22,1) both;
     }
-
-    .rose.r1 { left: 5%; bottom: 2%; transform: rotate(-16deg) scale(.92); }
-    .rose.r2 { left: 24%; bottom: 0%; transform: rotate(-7deg) scale(1.02); }
-    .rose.r3 { left: 42%; bottom: 7%; transform: rotate(0deg) scale(1.16); }
-    .rose.r4 { left: 62%; bottom: 1%; transform: rotate(8deg) scale(1.00); }
-    .rose.r5 { left: 78%; bottom: 3%; transform: rotate(16deg) scale(.9); }
 
     .stem {
       position: absolute;
-      left: 46%;
-      top: 86px;
-      width: 12px;
-      height: 170px;
+      left: 50%;
+      top: 205px;
+      width: 13px;
+      height: 200px;
       border-radius: 999px;
       background: linear-gradient(var(--stem), #205f45);
+      transform: translateX(-50%) rotate(2deg);
+      box-shadow: inset -3px 0 7px #0e4b33;
     }
 
     .leaf {
       position: absolute;
-      width: 54px;
-      height: 28px;
+      width: 82px;
+      height: 42px;
       background: linear-gradient(135deg, var(--leaf), #2b9367);
       border-radius: 0 100% 0 100%;
       box-shadow: inset -6px -8px 12px #0a4b2f44;
     }
 
-    .leaf.l1 { left: 8px; top: 158px; transform: rotate(-28deg); }
-    .leaf.l2 { left: 40px; top: 192px; transform: rotate(148deg); }
-
-    .bloom {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 120px;
-      height: 120px;
-    }
+    .leaf.l1 { left: 54px; top: 282px; transform: rotate(-28deg); }
+    .leaf.l2 { right: 50px; top: 322px; transform: rotate(148deg); }
 
     .petal {
       --r: 0deg;
+      --tx: 0px;
+      --ty: 0px;
+      --sx: 1;
+      --sy: 1;
       position: absolute;
-      inset: 26px;
-      border-radius: 26% 74% 52% 48%;
-      background: radial-gradient(circle at 30% 28%, var(--rose-3) 0%, var(--rose-2) 48%, var(--rose-1) 100%);
-      box-shadow: inset -8px -10px 14px #5f0f2f77, 0 0 18px #ff8fb280;
-      transform: rotate(var(--r)) scale(0.08);
-      transform-origin: 50% 78%;
+      left: 74px;
+      top: 72px;
+      width: 82px;
+      height: 112px;
+      border-radius: 58% 58% 45% 45% / 72% 72% 36% 36%;
+      background:
+        radial-gradient(circle at 36% 24%, #ffd1e0 0 8%, transparent 24%),
+        linear-gradient(155deg, #ff8bb3 0%, var(--rose-3) 34%, var(--rose-2) 68%, var(--rose-1) 100%);
+      box-shadow: inset -10px -16px 18px #5f0f2f70, inset 9px 9px 16px #ffd8e440, 0 0 20px #ff6da860;
+      transform: translate(var(--tx), var(--ty)) rotate(var(--r)) scale(.08);
+      transform-origin: 50% 88%;
       opacity: 0;
       animation: bloom 1.8s cubic-bezier(.2,.9,.22,1) forwards;
     }
 
-    .p2 { --r: 45deg; animation-delay: .08s; }
-    .p3 { --r: 90deg; animation-delay: .16s; }
-    .p4 { --r: 135deg; animation-delay: .24s; }
-    .p5 { --r: 180deg; animation-delay: .32s; }
-    .p6 { --r: 225deg; animation-delay: .4s; }
-    .p7 { --r: 270deg; animation-delay: .48s; }
-    .p8 { --r: 315deg; animation-delay: .56s; }
+    .p1 { --r: -92deg; --tx: -58px; --ty: 12px; --sx: 1.15; --sy: .96; animation-delay: .05s; }
+    .p2 { --r: -62deg; --tx: -44px; --ty: -24px; --sx: 1.12; --sy: 1.02; animation-delay: .1s; }
+    .p3 { --r: -30deg; --tx: -20px; --ty: -48px; --sx: 1.04; --sy: 1.08; animation-delay: .15s; }
+    .p4 { --r: 0deg; --tx: 0px; --ty: -58px; --sx: 1.08; --sy: 1.1; animation-delay: .2s; }
+    .p5 { --r: 30deg; --tx: 20px; --ty: -48px; --sx: 1.04; --sy: 1.08; animation-delay: .25s; }
+    .p6 { --r: 62deg; --tx: 44px; --ty: -24px; --sx: 1.12; --sy: 1.02; animation-delay: .3s; }
+    .p7 { --r: 92deg; --tx: 58px; --ty: 12px; --sx: 1.15; --sy: .96; animation-delay: .35s; }
+    .p8 { --r: -120deg; --tx: -70px; --ty: 50px; --sx: 1.18; --sy: .86; animation-delay: .4s; }
+    .p9 { --r: 120deg; --tx: 70px; --ty: 50px; --sx: 1.18; --sy: .86; animation-delay: .45s; }
+    .p10 { --r: -45deg; --tx: -30px; --ty: 22px; --sx: .78; --sy: .86; animation-delay: .5s; }
+    .p11 { --r: 45deg; --tx: 30px; --ty: 22px; --sx: .78; --sy: .86; animation-delay: .55s; }
+    .p12 { --r: 0deg; --tx: 0px; --ty: 18px; --sx: .7; --sy: .82; animation-delay: .6s; }
 
     .core {
       position: absolute;
-      inset: 43px;
+      left: 86px;
+      top: 88px;
+      width: 58px;
+      height: 58px;
       border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #ffc3da, #e91e63 65%, #8c0d38);
+      background:
+        radial-gradient(circle at 34% 28%, #ffd5e3 0 8%, transparent 22%),
+        radial-gradient(circle, #ff5f99 0 34%, #cc1d60 58%, #781033 100%);
       box-shadow: inset -10px -12px 12px #5f0a2e66, 0 0 24px #ff86af88;
       transform: scale(0.08);
       opacity: 0;
@@ -195,9 +214,10 @@
       max-width: 22ch;
       font-family: "Amiri", serif;
       font-size: clamp(1.05rem, 3.9vw, 2rem);
+      font-weight: 700;
       line-height: 1.85;
-      color: var(--gold);
-      text-shadow: 0 2px 18px #000000a6;
+      color: #fff2c8;
+      text-shadow: 0 0 12px #f7e7b266, 0 2px 18px #000000d0;
       opacity: 0;
       animation: fade-verse 2.2s 1.25s ease-out forwards;
     }
@@ -208,21 +228,21 @@
     }
 
     @keyframes bloom {
-      to { transform: rotate(var(--r)) scale(1); opacity: 1; }
+      to { transform: translate(var(--tx), var(--ty)) rotate(var(--r)) scale(var(--sx), var(--sy)); opacity: 1; }
     }
 
     @keyframes bloom-core {
       to { transform: scale(1); opacity: 1; }
     }
 
-    @keyframes sway {
-      0%, 100% { transform: rotate(0deg) translateY(0); }
-      50% { transform: rotate(1.4deg) translateY(-2px); }
+    @keyframes rose-breath {
+      0%, 100% { transform: translateX(-50%) scale(var(--rose-scale)) rotate(0deg) translateY(0); }
+      50% { transform: translateX(-50%) scale(var(--rose-scale)) rotate(1.1deg) translateY(-5px); }
     }
 
-    @keyframes sway-rose {
-      0%, 100% { transform-origin: 50% 100%; }
-      50% { transform-origin: 54% 100%; }
+    @keyframes bloom-head {
+      from { transform: translateX(-50%) translateY(18px) scale(.9); opacity: .4; }
+      to { transform: translateX(-50%) translateY(0) scale(1); opacity: 1; }
     }
 
     @keyframes rise-name {
@@ -236,13 +256,11 @@
     @media (max-width: 640px) {
       .scene { height: 100vh; }
       .text-wrap { top: 11%; }
-      .bouquet {
-        bottom: max(28px, 5vh);
-        height: 320px;
-      }
-      .rose {
-        width: 110px;
-        height: 250px;
+      .single-rose {
+        --rose-scale: .9;
+        bottom: max(32px, 5vh);
+        width: 250px;
+        height: 370px;
       }
       .verse { max-width: 20ch; }
     }
@@ -257,51 +275,25 @@
       <p class="verse">فَوَدَدتُ تَقبيلَ السُيوفِ لِأَنَّها ... لَمَعَت كَبِرقِ ثَغرِكِ المُتَبَسِّمِ</p>
     </section>
 
-    <section class="bouquet" aria-hidden="true">
-      <div class="rose r1">
-        <div class="bloom">
-          <div class="petal"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div>
-          <div class="petal p5"></div><div class="petal p6"></div><div class="petal p7"></div><div class="petal p8"></div>
-          <div class="core"></div>
-        </div>
-        <div class="stem"></div><div class="leaf l1"></div><div class="leaf l2"></div>
+    <section class="single-rose" aria-hidden="true">
+      <div class="rose-head">
+        <div class="petal p1"></div>
+        <div class="petal p2"></div>
+        <div class="petal p3"></div>
+        <div class="petal p4"></div>
+        <div class="petal p5"></div>
+        <div class="petal p6"></div>
+        <div class="petal p7"></div>
+        <div class="petal p8"></div>
+        <div class="petal p9"></div>
+        <div class="petal p10"></div>
+        <div class="petal p11"></div>
+        <div class="petal p12"></div>
+        <div class="core"></div>
       </div>
-
-      <div class="rose r2">
-        <div class="bloom">
-          <div class="petal"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div>
-          <div class="petal p5"></div><div class="petal p6"></div><div class="petal p7"></div><div class="petal p8"></div>
-          <div class="core"></div>
-        </div>
-        <div class="stem"></div><div class="leaf l1"></div><div class="leaf l2"></div>
-      </div>
-
-      <div class="rose r3">
-        <div class="bloom">
-          <div class="petal"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div>
-          <div class="petal p5"></div><div class="petal p6"></div><div class="petal p7"></div><div class="petal p8"></div>
-          <div class="core"></div>
-        </div>
-        <div class="stem"></div><div class="leaf l1"></div><div class="leaf l2"></div>
-      </div>
-
-      <div class="rose r4">
-        <div class="bloom">
-          <div class="petal"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div>
-          <div class="petal p5"></div><div class="petal p6"></div><div class="petal p7"></div><div class="petal p8"></div>
-          <div class="core"></div>
-        </div>
-        <div class="stem"></div><div class="leaf l1"></div><div class="leaf l2"></div>
-      </div>
-
-      <div class="rose r5">
-        <div class="bloom">
-          <div class="petal"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div>
-          <div class="petal p5"></div><div class="petal p6"></div><div class="petal p7"></div><div class="petal p8"></div>
-          <div class="core"></div>
-        </div>
-        <div class="stem"></div><div class="leaf l1"></div><div class="leaf l2"></div>
-      </div>
+      <div class="stem"></div>
+      <div class="leaf l1"></div>
+      <div class="leaf l2"></div>
     </section>
   </main>
 
